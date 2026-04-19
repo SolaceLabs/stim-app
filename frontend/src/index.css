@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color tokens as space-separated RGB triplets so Tailwind can apply
+   alpha modifiers (e.g. bg-panel2/50) via rgb(var(--c-x) / <alpha>). */
+:root {
+  --c-bg:      11 13 16;
+  --c-panel:   19 22 27;
+  --c-panel2:  25 29 36;
+  --c-border:  38 43 51;
+  --c-accent:  124 156 255;
+  --c-accent2: 159 122 234;
+  --c-ok:      74 222 128;
+  --c-warn:    251 191 36;
+  --c-err:     248 113 113;
+  --c-muted:   138 147 160;
+  --c-fg:      229 231 235;
+  --c-scroll:  42 48 59;
+  --c-shimmer: 255 255 255;
+  --c-shimmer-a: 0.25;
+}
+
+html.light {
+  --c-bg:      247 248 250;
+  --c-panel:   255 255 255;
+  --c-panel2:  238 240 244;
+  --c-border:  215 218 224;
+  --c-accent:  76 99 210;
+  --c-accent2: 124 58 237;
+  --c-ok:      22 163 74;
+  --c-warn:    180 83 9;
+  --c-err:     220 38 38;
+  --c-muted:   90 98 112;
+  --c-fg:      26 29 35;
+  --c-scroll:  198 203 211;
+  --c-shimmer: 0 0 0;
+  --c-shimmer-a: 0.12;
+}
+
+html, body, #root { height: 100%; margin: 0; }
+body {
+  background: rgb(var(--c-bg));
+  color: rgb(var(--c-fg));
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--c-scroll)); border-radius: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+.mono { font-family: "JetBrains Mono", Menlo, monospace; }
+
+@keyframes stim-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(-7px); opacity: 1; }
+}
+.stim-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgb(var(--c-accent));
+  animation: stim-bounce 0.9s infinite ease-in-out;
+}
+
+@keyframes stim-shimmer {
+  0%   { background-position: -150% 0; }
+  100% { background-position: 150% 0; }
+}
+.stim-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--c-shimmer) / var(--c-shimmer-a)) 0%,
+    rgb(var(--c-shimmer) / var(--c-shimmer-a)) 40%,
+    rgb(var(--c-fg)) 50%,
+    rgb(var(--c-shimmer) / var(--c-shimmer-a)) 60%,
+    rgb(var(--c-shimmer) / var(--c-shimmer-a)) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: stim-shimmer 1.6s linear infinite;
+}
