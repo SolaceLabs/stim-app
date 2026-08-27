@@ -1,0 +1,25 @@
+version: 3
+
+project:
+  locator: SolaceLabs_stim-app-frontend
+  id: SolaceLabs_stim-app-frontend
+  name: stim-app-frontend
+  teams: []
+  labels:
+    - javascript
+
+vendoredDependencies:
+  forceRescans: false
+  scanMethod: CLILicenseScan
+  licenseScanPathFilters:
+    exclude:
+      - "./.git"
+      - "./.github"
+
+paths:
+  exclude:
+    - ./.git
+    - ./.github
+
+telemetry:
+  scope: full
