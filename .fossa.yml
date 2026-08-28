@@ -1,0 +1,26 @@
+version: 3
+
+project:
+  locator: SolaceLabs_stim-app
+  id: SolaceLabs_stim-app
+  name: stim-app
+  teams: []
+  labels:
+    - javascript
+    - python
+
+vendoredDependencies:
+  forceRescans: false
+  scanMethod: CLILicenseScan
+  licenseScanPathFilters:
+    exclude:
+      - "./.git"
+      - "./.github"
+
+paths:
+  exclude:
+    - ./.git
+    - ./.github
+
+telemetry:
+  scope: full
